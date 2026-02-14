@@ -22,3 +22,10 @@ export default function LoginForm() {
     </Formik>
   );
 }
+
+        <Field type="password" name="password" placeholder="Password" className={styles.input} />
+        <button type="submit" className={styles.button}>Login</button>
+      </Form>
+    </Formik>
+  );
+}
