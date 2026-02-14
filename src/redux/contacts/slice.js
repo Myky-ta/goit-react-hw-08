@@ -1,15 +1,17 @@
-
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from "./operations";
-import { logout } from "../auth/operations";
+// src/redux/contacts/slice.js
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const contactsSlice = createSlice({
-  name: "contacts",
-  initialState: { items: [], isLoading: false, error: null },
-  reducers: {},
-  extraReducers: (builder) => {
+  name: 'contacts',
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+  },
+  extraReducers: builder => {
     builder
-      .addCase(fetchContacts.pending, (state) => {
+      .addCase(fetchContacts.pending, state => {
         state.isLoading = true;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -24,10 +26,7 @@ const contactsSlice = createSlice({
         state.items.push(action.payload);
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
-        state.items = state.items.filter((c) => c.id !== action.payload.id);
-      })
-      .addCase(logout.fulfilled, (state) => {
-        state.items = [];
+        state.items = state.items.filter(c => c.id !== action.payload);
       });
   },
 });

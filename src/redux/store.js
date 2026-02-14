@@ -4,14 +4,14 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 
-import contactsReducer from './contacts/contactsSlice';
-import filtersReducer from './filters/filtersSlice';
-import authReducer from './auth/authSlice';
+import contactsReducer from './contacts/slice';
+import filtersReducer from './filters/slice';
+import authReducer from './auth/slice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth'], // зберігаємо лише auth
+  whitelist: ['auth'],
 };
 
 const rootReducer = combineReducers({
