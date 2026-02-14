@@ -8,29 +8,15 @@ export default function LoginForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(login(values)); // values = { email, password }
+    dispatch(login(values));
     resetForm();
   };
 
   return (
     <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
       <Form className={styles.form}>
-        <Field
-          type="email"
-          name="email"
-          placeholder="Email"
-          autoComplete="email"
-          className={styles.input}
-          required
-        />
-        <Field
-          type="password"
-          name="password"
-          placeholder="Password"
-          autoComplete="current-password"
-          className={styles.input}
-          required
-        />
+        <Field type="email" name="email" placeholder="Email" className={styles.input} />
+        <Field type="password" name="password" placeholder="Password" className={styles.input} />
         <button type="submit" className={styles.button}>Login</button>
       </Form>
     </Formik>
