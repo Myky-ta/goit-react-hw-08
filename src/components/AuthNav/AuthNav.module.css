@@ -1,0 +1,9 @@
+/* src/components/AuthNav/AuthNav.module.css */
+.authNav {
+  display: flex;
+  gap: 12px;
+}
+.link {
+  color: white;
+  text-decoration: none;
+}

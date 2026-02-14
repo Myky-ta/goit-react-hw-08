@@ -1,0 +1,10 @@
+/* src/pages/ContactsPage/ContactsPage.module.css */
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}

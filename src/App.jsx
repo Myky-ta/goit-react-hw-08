@@ -1,41 +1,31 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route, Navigate } from "react-router-dom";
+// src/App.jsx
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
+import HomePage from './pages/HomePage/HomePage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+import ContactsPage from './pages/ContactsPage/ContactsPage';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 
-import { refreshUser } from "./redux/auth/operations";
-import { selectIsRefreshing, selectIsLoggedIn } from "./redux/auth/selectors";
-
-function App() {
-  const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsRefreshing);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
-
-  if (isRefreshing) {
-    return <p>Loading...</p>;
-  }
-
+export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<h1>Home Page</h1>} />
-      <Route
-        path="/register"
-        element={isLoggedIn ? <Navigate to="/contacts" /> : <h1>Registration Page</h1>}
-      />
-      <Route
-        path="/login"
-        element={isLoggedIn ? <Navigate to="/contacts" /> : <h1>Login Page</h1>}
-      />
-      <Route
-        path="/contacts"
-        element={isLoggedIn ? <h1>Contacts Page</h1> : <Navigate to="/login" />}
-      />
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/login"
+          element={<RestrictedRoute component={<LoginPage />} />}
+        />
+        <Route
+          path="/register"
+          element={<RestrictedRoute component={<RegistrationPage />} />}
+        />
+        <Route
+          path="/contacts"
+          element={<PrivateRoute component={<ContactsPage />} />}
+        />
+      </Route>
     </Routes>
   );
 }
-
-export default App;

@@ -1,0 +1,6 @@
+/* src/components/Filter/Filter.module.css */
+.input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+}

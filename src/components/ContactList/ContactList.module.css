@@ -1,0 +1,17 @@
+/* src/components/ContactList/ContactList.module.css */
+.list {
+  list-style: none;
+  padding: 0;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.button {
+  background-color: #ff6b6b;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  cursor: pointer;
+}
