@@ -1,4 +1,4 @@
-// src/components/LoginForm/LoginForm.jsx
+// src/components/LoginForm/LoginForm.jsx.
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { login } from '../../redux/auth/operations';
