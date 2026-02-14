@@ -8,16 +8,37 @@ export default function RegistrationForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(register(values));
+    dispatch(register(values)); // values = { name, email, password }
     resetForm();
   };
 
   return (
     <Formik initialValues={{ name: '', email: '', password: '' }} onSubmit={handleSubmit}>
       <Form className={styles.form}>
-        <Field type="text" name="name" placeholder="Name" className={styles.input} />
-        <Field type="email" name="email" placeholder="Email" className={styles.input} />
-        <Field type="password" name="password" placeholder="Password" className={styles.input} />
+        <Field
+          type="text"
+          name="name"
+          placeholder="Name"
+          autoComplete="name"
+          className={styles.input}
+          required
+        />
+        <Field
+          type="email"
+          name="email"
+          placeholder="Email"
+          autoComplete="email"
+          className={styles.input}
+          required
+        />
+        <Field
+          type="password"
+          name="password"
+          placeholder="Password"
+          autoComplete="new-password"
+          className={styles.input}
+          required
+        />
         <button type="submit" className={styles.button}>Register</button>
       </Form>
     </Formik>
