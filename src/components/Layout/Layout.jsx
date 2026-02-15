@@ -1,15 +1,14 @@
- // src/components/Layout/Layout.jsx
 import { Outlet } from 'react-router-dom';
-import AppBar from '../AppBar/AppBar';
-import styles from './Layout.module.css';
+import Navigation from '../Navigation/Navigation';
 
 export default function Layout() {
   return (
-    <div className={styles.layout}>
-      <AppBar />
-      <main className={styles.main}>
+    <div className="layout">
+      <Navigation />
+      <main>
         <Outlet />
       </main>
     </div>
   );
 }
+

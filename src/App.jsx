@@ -26,25 +26,22 @@ export default function App() {
   }
 
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
         <Route
-          path="/login"
+          path="login"
           element={<RestrictedRoute component={LoginPage} redirectTo="/contacts" />}
         />
         <Route
-          path="/register"
+          path="register"
           element={<RestrictedRoute component={RegistrationPage} redirectTo="/contacts" />}
         />
         <Route
-          path="/contacts"
+          path="contacts"
           element={<PrivateRoute component={ContactsPage} redirectTo="/login" />}
         />
-      </Routes>
-    </Layout>
+      </Route>
+    </Routes>
   );
 }
-
-
-

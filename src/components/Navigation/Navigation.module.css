@@ -1,12 +1,37 @@
-/* src/components/Navigation/Navigation.module.css */
 .nav {
   display: flex;
-  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 10px 20px;
 }
+
 .link {
-  color: white;
+  color: #fff;
   text-decoration: none;
+  margin-right: 15px;
+  font-weight: 500;
 }
+
 .link.active {
-  font-weight: bold;
+  text-decoration: underline;
+}
+
+.user {
+  color: #fff;
+  margin-right: 15px;
+}
+
+.logout {
+  background: #ff4d4d;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.logout:hover {
+  background: #e60000;
 }

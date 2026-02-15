@@ -10,7 +10,7 @@ import authReducer from './auth/slice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'], // зберігаємо лише токен
+  whitelist: ['token'],
 };
 
 const rootReducer = combineReducers({
@@ -28,3 +28,4 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
