@@ -1,16 +1,25 @@
-// src/pages/ContactsPage/ContactsPage.jsx
-import ContactForm from '../../components/ContactForm/ContactForm';
-import ContactList from '../../components/ContactList/ContactList';
-import Filter from '../../components/Filter/Filter';
-import styles from './ContactsPage.module.css';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from '../../redux/contacts/operations';
+import { selectIsLoading, selectFilteredContacts } from '../../redux/contacts/selectors';
 
 export default function ContactsPage() {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const contacts = useSelector(selectFilteredContacts);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Contacts</h1>
-      <ContactForm />
-      <Filter />
-      <ContactList />
+    <div>
+      {isLoading && <p>Loading...</p>}
+      <ul>
+        {contacts.map(c => (
+          <li key={c.id}>{c.name}: {c.number}</li>
+        ))}
+      </ul>
     </div>
   );
 }
