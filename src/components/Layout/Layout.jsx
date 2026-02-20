@@ -1,11 +1,11 @@
-import Navigation from '../Navigation/Navigation';
-import styles from './Layout.module.css';
+import AppBar from '../AppBar/AppBar';
 
 export default function Layout({ children }) {
   return (
-    <div className={styles.layout}>
-      <Navigation />
+    <>
+      <AppBar />
       <main>{children}</main>
-    </div>
+    </>
   );
 }
+
